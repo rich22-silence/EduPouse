@@ -191,3 +191,67 @@ select, input { cursor: pointer; }
   .game-top { grid-template-columns: auto 1fr; }
   .game-clock { justify-self: end; }
 }
+
+/* Final phone layout: keep every page inside the viewport and clear of the bottom bar. */
+@media (max-width: 760px) {
+  .app-shell, .main-area, #root { width: 100%; min-width: 0; }
+  .topbar { min-width: 0; }
+  .top-actions { flex: 0 0 auto; }
+  .mobile-nav {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .mobile-nav button { width: 100%; min-width: 0; padding: 3px 1px; gap: 3px; }
+  .mobile-nav button span { min-height: 22px; }
+  .mobile-nav button small {
+    max-width: 100%;
+    font-size: clamp(6px, 2.1vw, 8px);
+    line-height: 1.05;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .page-content { overflow-wrap: anywhere; }
+  .page-title > div:first-child { min-width: 0; }
+  .agenda-title { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+  .agenda-title > div:first-child { padding-right: 0; }
+  .agenda-title .button { min-height: 42px; white-space: normal; text-align: center; }
+  .game-wrap { margin-bottom: calc(82px + var(--safe-bottom)); }
+  .game-footer {
+    bottom: calc(64px + var(--safe-bottom));
+    margin-bottom: 0;
+    padding-bottom: 10px;
+  }
+  .game-footer .button { max-width: 72%; min-height: 46px; }
+  .history-row { min-width: 0; }
+  .history-main { min-width: 0; overflow-wrap: anywhere; }
+  .history-row strong { white-space: nowrap; }
+  .settings-list > div:not(.settings-tip) { flex-wrap: wrap; }
+  .settings-list > div:not(.settings-tip) > div:nth-child(2) { flex: 1 1 calc(100% - 58px); min-width: 0; }
+  .favorite-tabs { overflow-x: auto; scrollbar-width: none; }
+  .favorite-tabs::-webkit-scrollbar { display: none; }
+  .favorite-tabs button { flex: 0 0 auto; min-height: 44px; }
+  .agenda-fields input, .agenda-fields select, .filter-row select, .setup-panel select { min-width: 0; }
+  .toast { max-width: calc(100vw - 24px); box-sizing: border-box; }
+}
+@media (max-width: 380px) {
+  .page-content { padding-inline: 10px; }
+  .topbar { padding-inline: 10px; }
+  .crumb { max-width: 48%; }
+  .hero-slide { padding-inline: 15px; }
+  .hero-slide .carousel-content h1 { font-size: 25px; }
+  .hero-slide-footer { left: 12px; right: 12px; }
+  .hero-slide .photo-credit { max-width: 120px; text-align: right; }
+  .agenda-title { grid-template-columns: 1fr; }
+  .agenda-title .button { justify-self: start; }
+  .agenda-calendar, .agenda-day, .agenda-form { padding: 12px; }
+  .calendar-weekdays, .calendar-grid { gap: 1px; }
+  .calendar-day { height: 35px; }
+  .agenda-fields { gap: 8px; }
+  .result-grid { gap: 7px; }
+}
